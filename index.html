@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+    button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+<button onclick="myFunction()"></button>
+
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+var htmlCode = `
+
+#la6
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{subcaption}% For side-by-side
+\begin{document}
+\textbf{\huge Side-by-Side Subgraph}
+\begin{figure}[ht]
+\subfloat[First Dataset Accuracy]{
+\begin{minipage}[c][1\width]{
+0.3\textwidth}
+\centering
+\includegraphics[width=1\textwidth]{Fig3.jpeg}
+\end{minipage}}
+\hfill
+\subfloat[Second Dataset Accuracy]{
+\begin{minipage}[c][1\width]{
+0.3\textwidth}
+\centering
+\includegraphics[width=1.1\textwidth]{Fig11.jpeg}
+\end{minipage}}
+\hfill
+\subfloat[Comparison]{
+\begin{minipage}[c][1\width]{
+0.3\textwidth}
+\centering
+\includegraphics[width=1.2\textwidth]{Fig15.jpeg}
+\end{minipage}}
+\caption{Performance Analysis}
+\end{figure}
+\end{document}
+
+`
+
+document.getElementById("myInput").value = htmlCode;
+
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value.replace(/&lt;/g, '<'));
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
